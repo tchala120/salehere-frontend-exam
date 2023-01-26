@@ -1,5 +1,60 @@
+import { useState } from 'react'
+import { toast, ToastContainer } from 'react-toastify'
+import { useNavigate, useParams } from 'react-router-dom'
+
+import ContentContainer from 'components/ContentContainer'
+import ChatForm, { FormValues } from 'components/ChatForm'
+
+import { routeTo } from 'helpers/utils'
+
+import { paths } from 'setup/PageRouter'
+
 const CreateRoomPage = () => {
-  return <>This is create room page should have username to access this page</>
+  const [form, setForm] = useState<FormValues>()
+
+  const params = useParams()
+  const navigate = useNavigate()
+
+  return (
+    <form
+      onSubmit={(event) => {
+        event.preventDefault()
+
+        if (form?.room == null || form?.room.length === 0) {
+          toast('กรุณากรอกชื่อห้อง', {
+            type: 'error',
+          })
+
+          return
+        }
+
+        navigate(
+          routeTo(paths.chat, {
+            params: {
+              roomID: form.room,
+              username: params.username,
+            },
+          })
+        )
+      }}
+    >
+      <ContentContainer>
+        <span className="title">สร้างห้องใหม่</span>
+
+        <ChatForm
+          data={form}
+          onChange={(name, value) => {
+            setForm((prev) => ({
+              ...prev,
+              [name]: value,
+            }))
+          }}
+        />
+
+        <ToastContainer position="bottom-center" />
+      </ContentContainer>
+    </form>
+  )
 }
 
 export default CreateRoomPage
