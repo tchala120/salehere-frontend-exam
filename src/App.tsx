@@ -1,7 +1,7 @@
-import PageLayout from 'layout/PageLayout'
+import PageRouter from 'setup/PageRouter'
 
 const App = () => {
-  return <PageLayout>Hello world</PageLayout>
+  return <PageRouter />
 }
 
 export default App
