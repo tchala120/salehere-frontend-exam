@@ -1,5 +1,7 @@
+import PageLayout from 'layout/PageLayout'
+
 const App = () => {
-  return <div className="app">Good Luck</div>
+  return <PageLayout>Hello world</PageLayout>
 }
 
 export default App

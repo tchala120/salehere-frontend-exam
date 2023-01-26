@@ -1,0 +1,51 @@
+* {
+  box-sizing: border-box;
+  font-family: Prompt, sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: 'Prompt', sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+.title {
+  font-size: 37px;
+  color: #383838;
+}
+
+button {
+  color: #ffffff;
+  background-image: radial-gradient(
+    ellipse farthest-corner at top left,
+    #c41417 0%,
+    #b31315 100%
+  );
+  font-size: 24px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  padding: 16px 28px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+}
+
+input {
+  width: 100%;
+  height: 60px;
+  color: #4e4e4e;
+  border: 3px solid lightgray;
+  border-radius: 10px;
+  font-size: 34px;
+  padding: 0px 12px;
+}
