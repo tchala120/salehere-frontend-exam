@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const UserCreationContainer = styled.div`
+const ContentContainer = styled.div`
   width: 100%;
   max-width: 768px;
   margin: 0 auto;
@@ -20,4 +20,4 @@ const UserCreationContainer = styled.div`
   }
 `
 
-export default UserCreationContainer
+export default ContentContainer
