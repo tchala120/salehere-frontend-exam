@@ -1,3 +1,4 @@
+import styled from 'styled-components'
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom'
 import { QueryParamProvider } from 'use-query-params'
 import { ReactRouter6Adapter } from 'use-query-params/adapters/react-router-6'
@@ -5,8 +6,6 @@ import { ReactRouter6Adapter } from 'use-query-params/adapters/react-router-6'
 import PageLayout from 'layout/PageLayout'
 
 import HomePage from 'pages/HomePage'
-
-import ContentCenter from 'components/ContentCenter'
 
 import { certifiedRoutes, paths, roomRoutes } from './routes'
 
@@ -52,7 +51,7 @@ const RootProvider = () => {
 const RootError = () => {
   return (
     <PageLayout>
-      <ContentCenter>
+      <ErrorContainer>
         <span className="title">
           คุณไม่สามารถเข้าถึงหน้านี้โปรดลองใหม่อีกครั้ง
         </span>
@@ -60,7 +59,18 @@ const RootError = () => {
         <button onClick={() => (window.location.href = '/')}>
           กลับไปหน้าแรก
         </button>
-      </ContentCenter>
+      </ErrorContainer>
     </PageLayout>
   )
 }
+
+const ErrorContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+`
