@@ -1,45 +1,53 @@
 # Proxumer - Frontend Developer Interview Question
 
-Objective: A web-based, GraphQL-powered chat client
+Take a look at [requirement](requirements.md)
 
-## Demo video
+This project was built by Create React App
 
-See the demo video in `screenshots/`
+# Setup
 
-## CSS Format Requirement
+This project use [`supabase`](https://supabase.com/docs) for realtime database as a purpose to create realtime chat
 
-Font Family Prompt
+1. This project use yarn, if you don't have this then run this command to install npm install --global yarn
+2. yarn for install all dependencies
+3. Create file .env.local at root directory of this project (same level as .env)
+4. run `yarn start` for development
 
-##### Container White
+```env
+REACT_APP_SUPABASE_URL="YOUR_SUPABASE_URL"
+REACT_APP_SUPABASE_ANON_KEY="YOUR_SUPABASE_ANON_KEY"
+```
 
-    background color #ffffff
-    radius 20px
-    height 90vh
+# Useful Information
 
-##### Title
+- [Supabase](https://supabase.com/)
+- [React Router Dom](https://reactrouter.com/en/main/start/tutorial)
+- [Styled Components](https://styled-components.com/docs/basics)
 
-    font size 37px
-    color #383838
+# Available Scripts
 
-##### Button
+In the project directory, you can run:
 
-    color #ffffff
-    background image radial-gradient(ellipse farthest-corner at top left, #c41417 0%, #b31315 100%)
+### `yarn start`
 
-##### Text Button
+Runs the app in the development mode.\
+Open [http://localhost:4100](http://localhost:4100) to view it in the browser.
 
-    color #6f6f6f
-    hover color #c41417
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-##### Input
+### `yarn test`
 
-    height 60px
-    color #4e4e4e
-    border 3px solid lightgray
-    radius 10px
-    font size 34px
+Launches the test runner in the interactive watch mode.
 
-## Evaluation
+### `yarn build`
 
-- You must strictly adhere to the above CSS format requirement
-- Your solution must function in the exact same way as shown in the given demo video
+Builds the app for production to the `build` folder.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+More details about [Available scripts](https://create-react-app.dev/docs/available-scripts)
+
+To learn React, check out the [React documentation](https://reactjs.org/).
