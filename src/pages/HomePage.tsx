@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { toast, ToastContainer } from 'react-toastify'
 
 import FadeUp from 'components/FadeUp'
 import UserCreationContainer from 'components/UserCreationContainer'
@@ -19,6 +20,14 @@ const HomePage = () => {
     <form
       onSubmit={(event) => {
         event.preventDefault()
+
+        if (username == null || username.length === 0) {
+          toast('กรุณากรอกชื่อ', {
+            type: 'error',
+          })
+
+          return
+        }
 
         navigate(
           routeTo(paths.createRoom, {
@@ -40,6 +49,8 @@ const HomePage = () => {
         <FadeUp startAnimate={startAnimate}>
           <button type="submit">ยืนยัน</button>
         </FadeUp>
+
+        <ToastContainer position="bottom-center" />
       </UserCreationContainer>
     </form>
   )
