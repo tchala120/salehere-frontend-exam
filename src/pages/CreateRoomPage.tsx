@@ -1,16 +1,16 @@
 import { useState } from 'react'
 import { toast, ToastContainer } from 'react-toastify'
-import styled from 'styled-components'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import ContentContainer from 'components/ContentContainer'
+import ChatForm, { FormValues } from 'components/ChatForm'
 
 import { routeTo } from 'helpers/utils'
 
 import { paths } from 'setup/PageRouter'
 
 const CreateRoomPage = () => {
-  const [room, setRoom] = useState<string>()
+  const [form, setForm] = useState<FormValues>()
 
   const params = useParams()
   const navigate = useNavigate()
@@ -20,7 +20,7 @@ const CreateRoomPage = () => {
       onSubmit={(event) => {
         event.preventDefault()
 
-        if (room == null || room.length === 0) {
+        if (form?.room == null || form?.room.length === 0) {
           toast('กรุณากรอกชื่อห้อง', {
             type: 'error',
           })
@@ -31,7 +31,7 @@ const CreateRoomPage = () => {
         navigate(
           routeTo(paths.chat, {
             params: {
-              roomID: room,
+              roomID: form.room,
               username: params.username,
             },
           })
@@ -41,16 +41,15 @@ const CreateRoomPage = () => {
       <ContentContainer>
         <span className="title">สร้างห้องใหม่</span>
 
-        <input
-          placeholder="ระบุชื่อห้อง"
-          value={room}
-          onChange={(event) => setRoom(event.target.value)}
+        <ChatForm
+          data={form}
+          onChange={(name, value) => {
+            setForm((prev) => ({
+              ...prev,
+              [name]: value,
+            }))
+          }}
         />
-
-        <CreateRoomActionBar>
-          <span className="text-button">กลับ</span>
-          <button type="submit">ยืนยัน</button>
-        </CreateRoomActionBar>
 
         <ToastContainer position="bottom-center" />
       </ContentContainer>
@@ -59,9 +58,3 @@ const CreateRoomPage = () => {
 }
 
 export default CreateRoomPage
-
-const CreateRoomActionBar = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 36px;
-`
