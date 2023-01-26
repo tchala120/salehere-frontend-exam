@@ -1,33 +1,24 @@
-import { getSearchParams } from 'helpers/utils'
+import { LoaderFunctionArgs } from 'react-router-dom'
 
-export const roomLoader = () => {
-  const searchParams = getSearchParams()
-
-  const username = searchParams.get('username')
-
-  if (username == null) {
+export const roomLoader = ({ params }: LoaderFunctionArgs) => {
+  if (params.username == null) {
     throw Error()
   }
 
   return {
-    username,
+    username: params.username,
   }
 }
 
-export const certifiedLoader = () => {
-  const searchParams = getSearchParams()
+export const certifiedLoader = ({ params }: LoaderFunctionArgs) => {
+  const { username, roomID } = params
 
-  const username = searchParams.get('username')
-  const room = searchParams.get('room')
-
-  console.log(username == null, room == null)
-
-  if (username == null || room == null) {
+  if (username == null || roomID == null) {
     throw Error()
   }
 
   return {
     username,
-    room,
+    roomID,
   }
 }
