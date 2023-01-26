@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { toast, ToastContainer } from 'react-toastify'
 
 import FadeUp from 'components/FadeUp'
-import UserCreationContainer from 'components/UserCreationContainer'
+import ContentContainer from 'components/ContentContainer'
 
 import { routeTo } from 'helpers/utils'
 
@@ -30,7 +30,7 @@ const HomePage = () => {
         }
 
         navigate(
-          routeTo(paths.createRoom, {
+          routeTo(paths.roomAction, {
             params: {
               username,
             },
@@ -38,7 +38,7 @@ const HomePage = () => {
         )
       }}
     >
-      <UserCreationContainer>
+      <ContentContainer>
         <span className="title">ชื่อของคุณ</span>
         <input
           placeholder="โปรดระบุ"
@@ -51,7 +51,7 @@ const HomePage = () => {
         </FadeUp>
 
         <ToastContainer position="bottom-center" />
-      </UserCreationContainer>
+      </ContentContainer>
     </form>
   )
 }
