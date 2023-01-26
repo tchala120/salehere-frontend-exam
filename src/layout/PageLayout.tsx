@@ -14,6 +14,8 @@ const PageLayout = ({ children }: PageLayoutProps) => {
     <PageLayoutContainer>
       <img className="logo" src={logo} alt="Proxumer" />
       <main className="container">{children}</main>
+
+      <Version>v{process.env.REACT_APP_VERSION}</Version>
     </PageLayoutContainer>
   )
 }
@@ -42,4 +44,13 @@ const PageLayoutContainer = styled.div`
     border-radius: 20px;
     padding: 24px;
   }
+`
+
+const Version = styled.div`
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  font-size: 12px;
+  color: #999;
+  transform: translateX(-50%);
 `
