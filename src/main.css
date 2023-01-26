@@ -17,6 +17,7 @@ body,
 .title {
   font-size: 37px;
   color: #383838;
+  font-weight: bold;
 }
 
 button {

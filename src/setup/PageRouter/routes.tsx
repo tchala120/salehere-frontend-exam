@@ -8,10 +8,10 @@ type RouteKey = 'root' | 'createRoom' | 'joinRoom' | 'chat'
 export const paths: Record<RouteKey, string> = {
   root: '/',
 
-  createRoom: '/create-room',
-  joinRoom: '/join-room',
+  createRoom: '/create-room/:username',
+  joinRoom: '/join-room/:username',
 
-  chat: '/chat/:id',
+  chat: '/chat/:roomID/:username',
 }
 
 export const roomRoutes: RouteObject[] = [

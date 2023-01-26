@@ -16,20 +16,19 @@ const PageRouter = () => {
   const router = createBrowserRouter([
     {
       element: <RootProvider />,
+      errorElement: <RootError />,
       children: [
         {
           path: paths.root,
           element: <HomePage />,
         },
         {
-          loader: () => roomLoader(),
+          loader: roomLoader,
           children: roomRoutes,
-          errorElement: <RouteError />,
         },
         {
-          loader: () => certifiedLoader(),
+          loader: certifiedLoader,
           children: certifiedRoutes,
-          errorElement: <RouteError />,
         },
       ],
     },
@@ -50,16 +49,18 @@ const RootProvider = () => {
   )
 }
 
-const RouteError = () => {
+const RootError = () => {
   return (
-    <ContentCenter>
-      <span className="title">
-        คุณไม่สามารถเข้าถึงหน้านี้โปรดลองใหม่อีกครั้ง
-      </span>
+    <PageLayout>
+      <ContentCenter>
+        <span className="title">
+          คุณไม่สามารถเข้าถึงหน้านี้โปรดลองใหม่อีกครั้ง
+        </span>
 
-      <button onClick={() => (window.location.href = '/')}>
-        กลับไปหน้าแรก
-      </button>
-    </ContentCenter>
+        <button onClick={() => (window.location.href = '/')}>
+          กลับไปหน้าแรก
+        </button>
+      </ContentCenter>
+    </PageLayout>
   )
 }
