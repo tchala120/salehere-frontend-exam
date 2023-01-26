@@ -1,13 +1,16 @@
+import type { RouteObject } from 'react-router-dom'
+
 import ChatPage from 'pages/ChatPage'
 import CreateRoomPage from 'pages/CreateRoomPage'
 import JoinRoomPage from 'pages/JoinRoomPage'
-import type { RouteObject } from 'react-router-dom'
+import RoomActionPage from 'pages/RoomActionPage'
 
-type RouteKey = 'root' | 'createRoom' | 'joinRoom' | 'chat'
+type RouteKey = 'root' | 'roomAction' | 'createRoom' | 'joinRoom' | 'chat'
 
 export const paths: Record<RouteKey, string> = {
   root: '/',
 
+  roomAction: '/room-action/:username',
   createRoom: '/create-room/:username',
   joinRoom: '/join-room/:username',
 
@@ -15,6 +18,10 @@ export const paths: Record<RouteKey, string> = {
 }
 
 export const roomRoutes: RouteObject[] = [
+  {
+    path: paths.roomAction,
+    element: <RoomActionPage />,
+  },
   {
     path: paths.createRoom,
     element: <CreateRoomPage />,
