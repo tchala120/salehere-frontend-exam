@@ -6,7 +6,7 @@ import PageLayout from 'layout/PageLayout'
 
 import HomePage from 'pages/HomePage'
 
-import ContentCenter from 'component/ContentCenter'
+import ContentCenter from 'components/ContentCenter'
 
 import { certifiedRoutes, paths, roomRoutes } from './routes'
 
