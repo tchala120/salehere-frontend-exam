@@ -1,3 +1,5 @@
+import 'configuration'
+
 import 'react-toastify/dist/ReactToastify.css'
 import './main.css'
 
