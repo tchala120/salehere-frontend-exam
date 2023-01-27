@@ -1,6 +1,6 @@
 import { createClient } from '@supabase/supabase-js'
 
-interface ChatItem {
+export interface ChatItem {
   id: number
   message: string
   from: string
@@ -22,14 +22,16 @@ const supabase = createClient(
 
 export default supabase
 
-export const listChatHistoriesByRoom = async (room: string) => {
-  const result = await supabase.from('chat').select().eq('room', room)
+export const schemaDBChangesChannel = supabase.channel('schema-db-changes')
 
-  return result
+export const listChatHistoriesByRoom = async (room: string) => {
+  const result = await supabase.from('chat').select()
+
+  return result.data as ChatItem[]
 }
 
 export const sendNewMessage = async (info: Partial<ChatItem>) => {
   const result = await supabase.from('chat').insert(info)
 
-  return result
+  return result.data
 }
