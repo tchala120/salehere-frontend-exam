@@ -2,10 +2,13 @@ import styled from 'styled-components'
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom'
 import { QueryParamProvider } from 'use-query-params'
 import { ReactRouter6Adapter } from 'use-query-params/adapters/react-router-6'
+import { QueryClientProvider } from 'react-query'
 
 import PageLayout from 'layout/PageLayout'
 
 import HomePage from 'pages/HomePage'
+
+import queryClient from 'setup/reactQuery'
 
 import { certifiedRoutes, paths, roomRoutes } from './routes'
 
@@ -40,11 +43,13 @@ export default PageRouter
 
 const RootProvider = () => {
   return (
-    <QueryParamProvider adapter={ReactRouter6Adapter}>
-      <PageLayout>
-        <Outlet />
-      </PageLayout>
-    </QueryParamProvider>
+    <QueryClientProvider client={queryClient}>
+      <QueryParamProvider adapter={ReactRouter6Adapter}>
+        <PageLayout>
+          <Outlet />
+        </PageLayout>
+      </QueryParamProvider>
+    </QueryClientProvider>
   )
 }
 
