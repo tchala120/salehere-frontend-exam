@@ -1,15 +1,21 @@
-import { useQuery, UseQueryOptions } from 'react-query'
+import { useQuery, UseQueryOptions, UseQueryResult } from 'react-query'
 
-import { listChatHistoriesByRoom } from 'setup/supabase'
+import { ChatItem, listChatHistoriesByRoom } from 'setup/supabase'
 
 const useListChatHistoriesByRoom = (
   room: string,
   options?: UseQueryOptions<any, any, any, any>
-) =>
+): UseQueryResult<ChatItem[], any> =>
   useQuery(
     ['listChatHistoriesByRoom', room],
     () => listChatHistoriesByRoom(room),
-    options
+    {
+      refetchOnMount: false,
+      refetchOnReconnect: false,
+      refetchIntervalInBackground: false,
+      refetchOnWindowFocus: false,
+      ...options,
+    }
   )
 
 export default useListChatHistoriesByRoom
