@@ -4,13 +4,16 @@ import { toast, ToastContainer } from 'react-toastify'
 
 import ContentContainer from 'components/ContentContainer'
 import ChatForm, { FormValues } from 'components/ChatForm'
+import FadeUp from 'components/FadeUp'
 
 import { routeTo } from 'helpers/utils'
 
 import { paths } from 'setup/PageRouter'
 
 const JoinRoomPage = () => {
-  const [form, setForm] = useState<FormValues>()
+  const [form, setForm] = useState<FormValues>({
+    room: '',
+  })
 
   const params = useParams()
   const navigate = useNavigate()
@@ -39,7 +42,9 @@ const JoinRoomPage = () => {
       }}
     >
       <ContentContainer>
-        <span className="title">เข้าร่วมแชท</span>
+        <FadeUp startAnimate>
+          <span className="title">เข้าร่วมแชท</span>
+        </FadeUp>
 
         <ChatForm
           data={form}

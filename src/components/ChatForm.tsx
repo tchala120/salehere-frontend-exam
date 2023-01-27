@@ -1,4 +1,7 @@
 import styled from 'styled-components'
+import { useNavigate } from 'react-router-dom'
+
+import FadeUp from 'components/FadeUp'
 
 export interface FormValues {
   room?: string
@@ -10,18 +13,26 @@ interface ChatRoomProps {
 }
 
 const ChatForm = ({ data, onChange }: ChatRoomProps) => {
+  const navigate = useNavigate()
+
   return (
     <>
-      <input
-        placeholder="ระบุชื่อห้อง"
-        value={data?.room}
-        onChange={(event) => onChange?.('room', event.target.value)}
-      />
+      <FadeUp startAnimate>
+        <input
+          placeholder="ระบุชื่อห้อง"
+          value={data?.room}
+          onChange={(event) => onChange?.('room', event.target.value)}
+        />
+      </FadeUp>
 
-      <RoomActionBarContainer>
-        <span className="text-button">กลับ</span>
-        <button type="submit">ยืนยัน</button>
-      </RoomActionBarContainer>
+      <FadeUp startAnimate>
+        <RoomActionBarContainer>
+          <span className="text-button" onClick={() => navigate(-1)}>
+            กลับ
+          </span>
+          <button type="submit">ยืนยัน</button>
+        </RoomActionBarContainer>
+      </FadeUp>
     </>
   )
 }
