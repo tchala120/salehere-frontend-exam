@@ -10,7 +10,7 @@ import { routeTo } from 'helpers/utils'
 import { paths } from 'setup/PageRouter'
 
 const HomePage = () => {
-  const [username, setUsername] = useState<string>()
+  const [username, setUsername] = useState<string>('')
 
   const navigate = useNavigate()
 

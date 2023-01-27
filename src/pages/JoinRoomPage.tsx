@@ -11,7 +11,9 @@ import { routeTo } from 'helpers/utils'
 import { paths } from 'setup/PageRouter'
 
 const JoinRoomPage = () => {
-  const [form, setForm] = useState<FormValues>()
+  const [form, setForm] = useState<FormValues>({
+    room: '',
+  })
 
   const params = useParams()
   const navigate = useNavigate()
