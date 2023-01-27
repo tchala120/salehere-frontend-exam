@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 import ContentContainer from 'components/ContentContainer'
 import ChatForm, { FormValues } from 'components/ChatForm'
+import FadeUp from 'components/FadeUp'
 
 import { routeTo } from 'helpers/utils'
 
@@ -39,7 +40,9 @@ const CreateRoomPage = () => {
       }}
     >
       <ContentContainer>
-        <span className="title">สร้างห้องใหม่</span>
+        <FadeUp startAnimate>
+          <span className="title">สร้างห้องใหม่</span>
+        </FadeUp>
 
         <ChatForm
           data={form}
